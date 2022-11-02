@@ -13,20 +13,27 @@
 	<div class="container">
 		<form id="newPlayer">
 			<h1 class="text-center">Pig Dice Game!</h1>
-			<label for="playerName">Enter your Name</label>
+			<label for="playerName">Player 1 Enter your Name</label>
 			<input type="text" class="form-control" id="playerName"><br>
-			<button type="submit" class="btn btn-success btn-lg" value="submit">Submit</button>
+			<label for="playerName2">Player 2 Enter your Name</label>
+			<input type="text" class="form-control" id="playerName2"><br>
+			<button type="submit" class="btn btn-success btn-lg" value="submit">Submit</button><br><br>
 		</form>
-		<button type="button" id="diceRoll" class="btn btn-danger btn-lg float-right invisible" value="diceRoll">Roll the
-			Die</button>
-
+		<button type="button" id="diceRoll" class="btn btn-danger btn-lg float-right ml-4 invisible" value="diceRoll">Roll the Die</button>
+			<button type="button" id="hold" class="btn btn-dark btn-lg float-right invisible" value="hold">Hold</button>
 		<div id="playerInfo">
 			<h3>Player 1 Name:</h3>
 			<p id="player1"></p>
 			<h3>Player 1 Score:</h3>
 			<p id="player1Score"></p>
 			<h3>Player 1 Turns:</h3>
-			<p id="player1Turns"></p>
+			<p id="player1Turns"></p><br>
+			<h3>Player 2 Name:</h3>
+			<p id="player2"></p>
+			<h3>Player 2 Score:</h3>
+			<p id="player2Score"></p>
+			<h3>Player 2 Turns:</h3>
+			<p id="player2Turns"></p>
 		</div>
 
 	</div>
