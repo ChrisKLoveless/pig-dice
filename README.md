@@ -1,4 +1,4 @@
-Describe: Player();
+```Describe: Player();
 
 Test: "It should create a player object with a name and score properties"
 Code: function Player(name, score){
@@ -41,3 +41,26 @@ Code: Player.prototype.setScore = function (num) {
 	};
 };
 Expected Output: test{score:0}
+
+Describe: randomNum();
+
+Test: "It should give a random number from 1 to 6"
+Code: function randomNum(max) {
+		return Math.floor(Math.random() * max)
+	}
+Expected Output: randomNum(6);
+
+Describe: Player.prototype.diceRoll = function();
+
+Test: "It will generate a random number with a fixed max"
+Code: Player.prototype.diceRoll = function() {
+	let roll = Math.floor(Math.random() * (6) + 1)
+	this.score += roll;
+}
+Expected Output: test.diceRoll()
+	test{name: 'test', score 5}
+
+Test:
+Code:
+Expected Output:
+```
