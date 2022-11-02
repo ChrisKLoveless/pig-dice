@@ -1,4 +1,5 @@
 // Business Logic for player
+var player;
 function Player(name) {
 	this.name = name;
 	this.score = 0;
@@ -19,19 +20,24 @@ Player.prototype.diceRoll = function () {
 // UI Logic
 function handleSubmit(event) {
 	event.preventDefault();
-	const userName = document.getElementById("playerName").value;
-	let newPlayer = new Player(userName);
+	userName = document.getElementById("playerName").value;
+	player = new Player(userName);
 	document.getElementById("diceRoll").classList.remove("invisible");
-	document.querySelector("p#player1").innerText = newPlayer.name;
-  document.querySelector("p#player1Score").innerText = newPlayer.score;
-  document.querySelector("p#player1Turns").innerText = newPlayer.turn;
+	document.querySelector("p#player1").innerText = player.name;
+	document.querySelector("p#player1Score").innerText = player.score;
+	document.querySelector("p#player1Turns").innerText = player.turn;
 }
 
-function handleRoll(event) {
-
+function handleRoll(player) {
+	player.diceRoll();
+	console.log(player.score);
+	document.querySelector("p#player1Score").innerText = player.score;
+	document.querySelector("p#player1Turns").innerText = player.turn;
 }
 
 window.addEventListener("load", function () {
 	document.querySelector("form#newPlayer").addEventListener("submit", handleSubmit);
-	document.getElementById("diceRoll").addEventListener("click", handleRoll);
+	document.getElementById("diceRoll").addEventListener("click", function () {
+		handleRoll(player);
+	});
 });
