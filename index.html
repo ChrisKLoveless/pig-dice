@@ -17,13 +17,21 @@
 	<div class="container">
 		<form id="newPlayer">
 			<h1 class="text-center">Pig Dice Game!</h1>
-			<label for="playerName">Enter Name</label>
-				<input type="text" class="form-control" id="playerName"><br>
-				<button type="submit">Submit</button>
+			<label for="playerName">Enter your Name</label>
+			<input type="text" class="form-control" id="playerName"><br>
+			<button type="submit" class="btn btn-success btn-lg" value="submit">Submit</button>
 		</form>
-		<div id="userScore">
-		
+		<button type="button" id="diceRoll" class="btn btn-danger btn-lg float-right invisible" value="diceRoll">Roll the Die</button>
+
+		<div id="playerInfo">
+			<h3>Player 1 Name:</h3>
+			<p id="player1"></p>
+			<h3>Player 1 Score:</h3>
+			<p id="player1Score"></p>
+			<h3>Player 1 Turns:</h3>
+			<p id="player1Turns"></p>
 		</div>
+
 	</div>
 </body>
 
