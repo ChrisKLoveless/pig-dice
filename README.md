@@ -9,10 +9,10 @@ Expected Output: let test = new Player("test", 0)
         test;
         Player {name: "test", score: 0}
 
-Describe: Player.prototype.addScore = function ();
+Describe: Player.prototype.addScore = function (num);
 
 Test: "It will add current players score"
-Code: function addScore(number) {
+Code: Player.prototype.addScore = function(numb) {
 	this.score += number;
 }
 Expected Output: let test = new Player("test", 0);
@@ -20,10 +20,15 @@ Expected Output: let test = new Player("test", 0);
 	test;
   Player {name: "test", score: 5}
 
+Describe: Player.prototype.resetScore();
 
-Test:
-Code:
-Expected Output:
+Test: "If the player rolls a 1, reset score to 0"
+Code: Player.prototype.resetScore = function(num) {
+	if (num === 1){
+		this.score = 0;
+	};
+};
+Expected Output: test{score: 0}
 
 Test:
 Code:
