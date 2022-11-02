@@ -30,6 +30,14 @@ Code: Player.prototype.resetScore = function(num) {
 };
 Expected Output: test{score: 0}
 
-Test:
-Code:
-Expected Output:
+Describe: Player.prototype.setScore = function (num);
+
+Test: "It will add current players score, or reset their total to 0 based on their number"
+Code: Player.prototype.setScore = function (num) {
+	if (num >= 2 && num <= 6) {
+		this.score += num;
+	} else if (num === 1) {
+		this.score = 0;
+	};
+};
+Expected Output: test{score:0}
