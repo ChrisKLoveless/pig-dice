@@ -4,26 +4,27 @@ var player2;
 
 function Player(name) {
 	this.name = name;
-	this.score = 0;
+	this.totalScore = 0;
 	this.turn = 0;
+	this.tempScore = 0;
 }
 
 Player.prototype.diceRoll = function () {
 	let roll = Math.floor(Math.random() * (6) + 1);
 	if (roll !== 1) {
-		this.score += roll;
+		this.tempScore += roll;
 		this.turn += 1;
-		this.turnScore += roll;
 	} else if (roll === 1) {
-		this.score = this.score;
-		this.turn = 0;
+		this.tempScore = 0;
+		this.turn += 1;
 	};
-	return this.score;
+	return this.tempScore;
 }
 
 Player.prototype.hold = function () {
-
-}
+	this.totalScore = this.tempScore;
+	this.tempScore = 0;
+};
 
 // UI Logic
 function handleSubmit(event) {
@@ -40,7 +41,6 @@ function handleSubmit(event) {
 	document.querySelector("p#player2").innerText = player2.name;
 	document.querySelector("p#player2Score").innerText = player2.score;
 	document.querySelector("p#player2Turns").innerText = player2.turn;
-	
 }
 
 function handleRoll(player) {
