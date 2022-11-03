@@ -1,4 +1,32 @@
-```Describe: Player();
+# Pig-Dice Game
+
+#### Contributors  _**Chris Loveless**_ _**Ryan Krueger**_ _**Anahi Ruiz Robles**_
+
+#### A website to play pig-dice
+
+## Technologies Used
+
+* _HTML_
+* _JavaScript_
+* _CSS_
+* _Bootstrap_
+
+## Description
+
+This is a game to play pig-dice with a friend.
+
+## Setup/Installation Requirements
+
+1. Access project through github repository (github.com/ChrisKLoveless)
+2. Clone repository 
+3. Open index.html file in browser
+
+## Known Bugs
+* When 1 is rolled next player message does not display.
+
+## Testing:
+```
+Describe: Player();
 
 Test: "It should create a player object with a name and score properties"
 Code: function Player(name, score){
@@ -26,8 +54,7 @@ Code: Player.prototype.diceRoll = function() {
 }
 Expected Output: test.diceRoll()
 	test{name: 'test', score 5}
-
-Test:
-Code:
-Expected Output:
 ```
+## License
+Copyright (c) 2022 Chris Loveless, Ryan Krueger, Anahi Ruiz Robles
+_[MIT](https://choosealicense.com/licenses/mit/)_
