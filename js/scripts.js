@@ -15,7 +15,7 @@ function Player(name) {
 	this.name = name;
 	this.totalScore = 0;
 	this.diceScore = 0;
-	this.turn = turn;
+	this.turn = true;
 }
 
 Player.prototype.diceRoll = function () {
@@ -76,20 +76,22 @@ function handleSubmit(event) {
 
 function handleRoll(player) {
 	player1.diceRoll();
-	player2.diceRoll();
 	console.log("player1 diceScore:",player1.diceScore);
 	console.log("player1 totalScore:",player1.totalScore);
 	console.log("player2 diceScore:", player2.diceScore);
 	console.log("player2 totalScore:",player2.totalScore);
 	document.querySelector("p#player1Score").innerText = player1.totalScore;
 	document.querySelector("p#player2Score").innerText = player2.totalScore;
+	document.querySelector("p#player1DiceScore").innerText = player1.diceScore;
+	document.querySelector("p#player2DiceScore").innerText = player2.diceScore;
 }
 
 function handleHold (player) {
 	player1.hold();
-	player2.hold();
 	document.querySelector("p#player1Score").innerText = player1.totalScore;
 	document.querySelector("p#player2Score").innerText = player2.totalScore;
+	document.querySelector("p#player1DiceScore").innerText = player1.diceScore;
+	document.querySelector("p#player2DiceScore").innerText = player2.diceScore;
 }
 
 window.addEventListener("load", function () {
