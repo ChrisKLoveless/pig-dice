@@ -26,7 +26,7 @@ Player.prototype.diceRoll = function () {
 	} else if (roll === 1) {
 		player.diceScore = 0;
 		changeTurn();
-		console.log("next player!");
+		document.querySelector("h2#next").classList.remove("invisible");
 	};
 }
 
@@ -35,7 +35,6 @@ Player.prototype.hold = function () {
 	player.totalScore += player.diceScore;
 	player.diceScore = 0;
 	changeTurn();
-	console.log("next player!");
 };
 
 function whosTurn() {
@@ -56,9 +55,6 @@ function changeTurn() {
 		player1.turn = true;
 		player2.turn = false;
 	}
-	// let h2 = document.createElement("h2");
-	// let text = document.createTextNode("Next Player!!!");
-	// h2.appendChild(text);
 }
 
 // UI Logic
@@ -90,7 +86,9 @@ function handleRoll(player) {
 	document.querySelector("p#player2Score").innerText = player2.totalScore;
 	document.querySelector("p#player1DiceScore").innerText = player1.diceScore;
 	document.querySelector("p#player2DiceScore").innerText = player2.diceScore;
-	document.querySelector("h2#next").classList.add("invisible");
+	setTimeout(() =>{
+		document.querySelector("h2#next").classList.add("invisible")
+},3000);
 }
 
 function handleHold (player) {
