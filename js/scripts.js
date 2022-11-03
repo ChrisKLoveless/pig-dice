@@ -1,7 +1,7 @@
 
-var player;
-var player2;
-
+let player1 = new Player(true);
+let player2 = new Player(false);
+let player;
 //Pig Game Logic
 function PigGame() {
 	this.players = [];
@@ -14,26 +14,46 @@ PigGame.prototype.addPlayer = function (player) {
 function Player(name) {
 	this.name = name;
 	this.totalScore = 0;
-	this.turn = 1;
-	this.tempScore = 0;
+	this.diceScore = 0;
+	this.turn = turn;
 }
 
 Player.prototype.diceRoll = function () {
+	let player = whosTurn();
 	let roll = Math.floor(Math.random() * (6) + 1);
 	if (roll !== 1) {
-		this.tempScore += roll;
-		this.turn += 1;
+		player.diceScore += roll;
 	} else if (roll === 1) {
-		this.tempScore = 0;
-		this.turn += 1;
+		player.diceScore = 0;
 	};
-
 }
 
 Player.prototype.hold = function () {
-	this.totalScore += this.tempScore;
-	this.tempScore = 0;
+	let player = whosTurn();
+	player.totalScore += player.diceScore;
+	player.diceScore = 0;
+	changeTurn();
 };
+
+function whosTurn() {
+	let player;
+	if (player1.turn === true) {
+		player = player1;
+	} else if (player2.turn === true) {
+		player = player2;
+	}
+	return player;
+}
+
+function changeTurn() {
+	if(player1.turn === true) {
+		player1.turn = false;
+		player2.turn = true;
+	} else {
+		player1.turn = true;
+		player2.turn = false;
+	}
+}
 
 // UI Logic
 let game = new PigGame();
@@ -42,37 +62,33 @@ function handleSubmit(event) {
 	event.preventDefault();
 	userName = document.getElementById("playerName").value;
 	userName2 = document.getElementById("playerName2").value;
-	player = new Player(userName);
+	player1 = new Player(userName);
 	player2 = new Player(userName2);
-	game.addPlayer(player);
+	game.addPlayer(player1);
 	game.addPlayer(player2);
 	document.getElementById("diceRoll").classList.remove("invisible");
 	document.getElementById("hold").classList.remove("invisible");
-	document.querySelector("p#player1").innerText = player.name;
-	document.querySelector("p#player1Score").innerText = player.totalScore;
-	document.querySelector("p#player1Turns").innerText = player.turn;
+	document.querySelector("p#player1").innerText = player1.name;
+	document.querySelector("p#player1Score").innerText = player1.totalScore;
 	document.querySelector("p#player2").innerText = player2.name;
 	document.querySelector("p#player2Score").innerText = player2.totalScore;
-	document.querySelector("p#player2Turns").innerText = player2.turn;
 }
 
 function handleRoll(player) {
-	player.diceRoll();
+	player1.diceRoll();
 	player2.diceRoll();
-	console.log(player.tempScore);
-	console.log(player.totalScore);
-	console.log(player2.tempScore);
-	console.log(player2.totalScore);
-	document.querySelector("p#player1Score").innerText = player.totalScore;
-	document.querySelector("p#player1Turns").innerText = player.turn;
+	console.log("player1 diceScore:",player1.diceScore);
+	console.log("player1 totalScore:",player1.totalScore);
+	console.log("player2 diceScore:", player2.diceScore);
+	console.log("player2 totalScore:",player2.totalScore);
+	document.querySelector("p#player1Score").innerText = player1.totalScore;
 	document.querySelector("p#player2Score").innerText = player2.totalScore;
-	document.querySelector("p#player2Turns").innerText = player2.turn;
 }
 
 function handleHold (player) {
-	player.hold();
+	player1.hold();
 	player2.hold();
-	document.querySelector("p#player1Score").innerText = player.totalScore;
+	document.querySelector("p#player1Score").innerText = player1.totalScore;
 	document.querySelector("p#player2Score").innerText = player2.totalScore;
 }
 
@@ -82,6 +98,6 @@ window.addEventListener("load", function () {
 		handleRoll(player);
 		document.getElementById("hold").addEventListener('click', function () {
 			handleHold(player);
-		})
+		});
 	});
 });
